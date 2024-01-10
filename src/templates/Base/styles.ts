@@ -4,7 +4,7 @@ export const Wrapper = styled.div<{ backgroundColor: string }>`
 ${({ theme, backgroundColor }) => css`
   width: 100%;
   height: 100vh;
-  position: relative;
+  position: flex;
   background-color: ${backgroundColor}; /* Cor de fundo do céu, ajuste conforme necessário */
 `}
 `;

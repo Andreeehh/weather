@@ -1,6 +1,7 @@
 import { SunRays } from 'components/SunRays';
 import * as Styled from './styles';
 import { WeatherCard, WeatherCardProps } from 'components/WeatherCard';
+import { Clouds } from 'components/Clouds';
 
 export type BaseProps = {
   weatherCard: WeatherCardProps;
@@ -18,8 +19,10 @@ export const Base = ({ weatherCard }: BaseProps) => {
   }
   return (
     <Styled.Wrapper backgroundColor={backgroundColor}>
+      <Clouds />
+      <SunRays />
+
       <Styled.Content>
-        <SunRays />
         <WeatherCard
           weatherInfo={weatherCard.weatherInfo}
           humidity={weatherCard.humidity}
