@@ -1,3 +1,4 @@
+import { SunRays } from 'components/SunRays';
 import * as Styled from './styles';
 import { WeatherCard, WeatherCardProps } from 'components/WeatherCard';
 
@@ -6,16 +7,19 @@ export type BaseProps = {
 };
 
 export const Base = ({ weatherCard }: BaseProps) => {
+  let backgroundColor = '#87CEEB';
+  switch (weatherCard.weatherInfo.weatherType.toLowerCase()) {
+    case 'cloud':
+      backgroundColor = '#87CCCC';
+      break;
+    default:
+      backgroundColor = '#87CEEB';
+      break;
+  }
   return (
-    <Styled.Wrapper>
+    <Styled.Wrapper backgroundColor={backgroundColor}>
       <Styled.Content>
-        <div className="sun-rays first-ray"></div>
-        <div className="sun-rays second-ray"></div>
-        <div className="sun-rays third-ray"></div>
-        <div className="sun-rays fourth-ray"></div>
-        <div className="sun-rays fifth-ray"></div>
-        <div className="sun-rays sixth-ray"></div>
-        <div className="sun-rays seventh-ray"></div>
+        <SunRays />
         <WeatherCard
           weatherInfo={weatherCard.weatherInfo}
           humidity={weatherCard.humidity}
