@@ -16,10 +16,16 @@ export const Wrapper = styled.div`
 export const Base = styled.div<{ width: number; animationDuration: string }>`
   ${({ width, animationDuration }) => css`
     margin-top: ${width * 0.325}px;
-    background-color: white;
+    background: #F0F0F0;
+    background: linear-gradient(top, #F0F0F0 5%, #FFFFFF 100%);
+    background: -webkit-linear-gradient(top, #F0F0F0 5%, #FFFFFF 100%);
+    background: -moz-linear-gradient(top, #F0F0F0 5%, #FFFFFF 100%);
+    background: -ms-linear-gradient(top, #F0F0F0 5%, #FFFFFF 100%);
+    background: -o-linear-gradient(top, #F0F0F0 5%, #FFFFFF 100%);
     width: ${width}px;
     height: ${width / 2}px;
     border-radius:  ${width / 2}px;
+    z-index: 1;
     animation: ${moveClouds} ${animationDuration} linear infinite;
   `}
 `;
@@ -32,7 +38,8 @@ ${({ size, animationDuration }) => css`
       background: #fff;
       position: absolute;
       border-radius: 50%;
-      left: left: ${size * 0.15}px;
+      left: ${size * 0.15}px;
+      background: #F0F0F0;
       animation: ${moveClouds} ${animationDuration} linear infinite;
   `}
 `;
@@ -46,6 +53,7 @@ ${({ size, animationDuration }) => css`
       position: absolute;
       border-radius: 50%;
       left: ${size * 0.5}px;
+      background: #F0F0F0;
       animation: ${moveClouds} ${animationDuration} linear infinite;
   `}
 `;
@@ -58,6 +66,7 @@ ${({ size, animationDuration }) => css`
       border-radius: 50%;
       left: ${size * 0.5}px;
       box-shadow: 2px 2px rgba(0, 0, 0, 0.5);
+      background: #F0F0F0;
       animation: ${moveClouds} ${animationDuration} linear infinite;
   `}
 `;
@@ -71,6 +80,7 @@ ${({ size, animationDuration }) => css`
       position: absolute;
       border-radius: 50%;
       left: ${size * 0.2}px;
+      background: #F0F0F0;
       animation: ${moveClouds} ${animationDuration} linear infinite;
   `}
 `;
