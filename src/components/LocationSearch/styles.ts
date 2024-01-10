@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   ${({ theme }) => css`
     .location-icon,
     .search-icon {
-      font-size: 1.5rem;
+      font-size: 3rem;
     }
 
     .search-icon {
@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
 
     .MuiOutlinedInput-root {
       width: 100%;
-      font-size: 1.2rem;
+      font-size: 2rem;
       border-radius: 150px;
       max-width: 300;
     }

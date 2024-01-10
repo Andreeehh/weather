@@ -6,9 +6,11 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-width: 350px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  max-width: 45rem;
   padding: 16px;
+  width: 100%;
+  z-index: 2;
 
   .weather-details {
     display: flex;

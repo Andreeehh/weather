@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   ${({ theme }) => css`
     display: flex;
     align-items: center;
+    z-index: 2;
 
     .humidity-icon {
       font-size: 3.2rem;

@@ -6,6 +6,7 @@ ${({ theme }) => css`
   flex-direction: column;
   align-items: center;
   padding: 16px;
+  z-index: 2;
 
 
   .weather-icon {
