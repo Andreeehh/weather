@@ -6,6 +6,7 @@ import { FullCloud } from 'components/FullCloud';
 import { RainComponent } from 'components/Rain';
 import { SnowFall } from 'components/SnowFall';
 import { StormRays } from 'components/StormRays';
+import { LightBeams } from 'components/LightBeam';
 
 export type BaseProps = {
   weatherCard: WeatherCardProps;
@@ -31,7 +32,7 @@ export const Base = ({ weatherCard }: BaseProps) => {
     <Styled.Wrapper backgroundColor={backgroundColor}>
       <Clouds cloudSizes={sizes1} cloudDurations={cloudDurations1} />
       <Clouds cloudSizes={sizes2} cloudDurations={cloudDurations2} />
-      <SunRays />
+      <LightBeams count={50} length={150} />
       <FullCloud />
       <SnowFall numDrops={200} />
       <StormRays
