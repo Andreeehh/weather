@@ -8,16 +8,18 @@ export type WeatherCardProps = {
   weatherInfo: WeatherInfoProps;
   humidity: number;
   wind: number;
+  onSearch: (query: string) => void;
 };
 
 export const WeatherCard = ({
   weatherInfo,
   humidity,
   wind,
+  onSearch,
 }: WeatherCardProps) => {
   return (
     <Styled.Wrapper>
-      <LocationSearch></LocationSearch>
+      <LocationSearch onSearch={onSearch}></LocationSearch>
       <WeatherInfo {...weatherInfo}></WeatherInfo>
       <div className="weather-details">
         <Humidity value={humidity}></Humidity>

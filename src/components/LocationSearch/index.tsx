@@ -6,10 +6,10 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import SearchIcon from '@mui/icons-material/Search';
 
 export type LocationSearchProps = {
-  title?: string;
+  onSearch: (query: string) => void;
 };
 
-export const LocationSearch: React.FC<LocationSearchProps> = ({ title }) => {
+export const LocationSearch: React.FC<LocationSearchProps> = ({ onSearch }) => {
   const [query, setQuery] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,8 +17,7 @@ export const LocationSearch: React.FC<LocationSearchProps> = ({ title }) => {
   };
 
   const handleSearch = () => {
-    // Adicione a lógica de busca aqui
-    console.log(`Buscando por: ${query}`);
+    onSearch(query);
   };
 
   return (
