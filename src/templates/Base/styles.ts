@@ -1,11 +1,14 @@
 import styled, { css } from 'styled-components';
 
-export const Wrapper = styled.div<{ backgroundColor: string }>`
-${({ theme, backgroundColor }) => css`
+export const Wrapper = styled.div<{
+  backgroundUrl: string;
+}>`
+${({ theme, backgroundUrl }) => css`
   width: 100%;
   height: 100vh;
   position: flex;
-  background-color: ${backgroundColor}; /* Cor de fundo do céu, ajuste conforme necessário */
+  background: url(${backgroundUrl});
+  background-size: cover;
 `}
 `;
 

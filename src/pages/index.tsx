@@ -1,13 +1,16 @@
 import { Base } from 'templates/Base';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import mock from 'components/WeatherCard/mock';
+import { BlogThemeContext } from 'contexts/BlogThemeContext';
 
 export default function Index() {
   const [weatherData, setWeatherData] = useState(mock);
+  const { setTheme } = useContext(BlogThemeContext);
 
   // Função para buscar dados com base na cidade
-  const fetchWeatherData = async (city: string) => {
+  const fetchWeatherData = async (city: string): Promise<void> => {
     try {
+      console.log('entrei');
       // Substitua 'SUA_CHAVE_DE_API' pela sua chave de API real
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=a40b3bfcb5551a937ca7d0a49d582272`,
@@ -16,22 +19,28 @@ export default function Index() {
 
       // Se a resposta da API contiver dados válidos, atualize o estado
       if (data) {
+        const currentDate = new Date();
+        const sunrise = new Date(data.sys.sunrise * 1000);
+        const sunset = new Date(data.sys.sunset * 1000);
         setWeatherData({
           weatherInfo: {
             weatherType: data.weather[0].main,
             temperature: data.main.temp,
             description: data.weather[0].description,
+            isNight: currentDate > sunrise && currentDate < sunset,
           },
           humidity: data.main.humidity,
           wind: data.wind.speed,
           onSearch: (query: string) => {
-            console.log(`Mock search triggered with query: ${query}`);
-            fetchWeatherData(query); // Agora podemos chamar fetchWeatherData aqui
+            // Retorna a promessa resultante da chamada assíncrona
+            return fetchWeatherData(query);
           },
         });
       }
     } catch (error) {
       console.error(`Erro ao buscar dados de ${city}:`, error);
+      // Rejeita a promessa em caso de erro
+      throw error;
     }
   };
 
@@ -40,10 +49,17 @@ export default function Index() {
     fetchWeatherData('dublin'); // Inicialmente, busca dados de Dublin
   }, []);
 
-  const handleSearch = (query: string) => {
-    // Chame a função para buscar dados quando a consulta de busca mudar
-    fetchWeatherData(query);
+  const handleSearch = async (query: string): Promise<void> => {
+    try {
+      // Chame a função para buscar dados quando a consulta de busca mudar
+      await fetchWeatherData(query);
+    } catch (error) {
+      // Lida com o erro, se necessário
+      console.error(`Erro durante a busca por ${query}:`, error);
+    }
   };
+
+  setTheme(weatherData.weatherInfo.isNight ? 'inverted' : 'default');
 
   return <Base weatherCard={weatherData} onSearch={handleSearch} />;
 }

@@ -6,14 +6,14 @@ import { RainComponent } from 'components/Rain';
 import { SnowFall } from 'components/SnowFall';
 import { StormRays } from 'components/StormRays';
 import { LightBeams } from 'components/LightBeam';
+import { Moon } from 'components/Moon';
 
 export type BaseProps = {
   weatherCard: WeatherCardProps;
-  onSearch: (query: string) => void;
+  onSearch: (query: string) => Promise<void>;
 };
 
 export const Base = ({ weatherCard, onSearch }: BaseProps) => {
-  let backgroundColor = '#87CEEB';
   const weatherType = weatherCard.weatherInfo.weatherType.toLowerCase();
   const sizes1 = [100, 200, 250, 300];
   const cloudDurations1 = ['30s', '35s', '40s', '45s'];
@@ -25,7 +25,10 @@ export const Base = ({ weatherCard, onSearch }: BaseProps) => {
     case 'clouds':
       additionalComponents = (
         <>
-          <LightBeams count={50} length={150} />
+          {!weatherCard.weatherInfo.isNight && (
+            <LightBeams count={50} length={150} />
+          )}
+          {weatherCard.weatherInfo.isNight && <Moon />}
 
           <Clouds cloudSizes={sizes1} cloudDurations={cloudDurations1} />
           <Clouds cloudSizes={sizes2} cloudDurations={cloudDurations2} />
@@ -33,8 +36,14 @@ export const Base = ({ weatherCard, onSearch }: BaseProps) => {
       );
       break;
     case 'clear':
-      additionalComponents = <LightBeams count={50} length={150} />;
-      backgroundColor = '#87CCCC';
+      additionalComponents = (
+        <>
+          {!weatherCard.weatherInfo.isNight && (
+            <LightBeams count={50} length={150} />
+          )}
+          {weatherCard.weatherInfo.isNight && <Moon />}
+        </>
+      );
       break;
     case 'rain':
       additionalComponents = (
@@ -50,7 +59,6 @@ export const Base = ({ weatherCard, onSearch }: BaseProps) => {
           <RainComponent numDrops={200} />
         </>
       );
-      backgroundColor = '#666666';
       break;
     case 'snow':
       additionalComponents = (
@@ -66,15 +74,17 @@ export const Base = ({ weatherCard, onSearch }: BaseProps) => {
           <SnowFall numDrops={200} />
         </>
       );
-      backgroundColor = '#B6B6B6';
       break;
     default:
-      backgroundColor = '#87CEEB';
       break;
   }
 
   return (
-    <Styled.Wrapper backgroundColor={backgroundColor}>
+    <Styled.Wrapper
+      backgroundUrl={`/assets/images/${
+        weatherCard.weatherInfo.isNight ? 'night' : 'day'
+      }.png`}
+    >
       {additionalComponents}
 
       <Styled.Content>

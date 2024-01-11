@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
     .location-icon,
     .search-icon {
       font-size: 3rem;
+      color: ${theme.colors.deepBlack};
     }
 
     .search-icon {
@@ -29,6 +30,7 @@ export const Wrapper = styled.div`
 
     .MuiOutlinedInput-input {
       padding: 8px; /* Espaçamento interno do input */
+      color: ${theme.colors.deepBlack};
     }
   `}
 `;

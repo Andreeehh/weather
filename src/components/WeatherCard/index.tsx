@@ -8,7 +8,7 @@ export type WeatherCardProps = {
   weatherInfo: WeatherInfoProps;
   humidity: number;
   wind: number;
-  onSearch: (query: string) => void;
+  onSearch: (query: string) => Promise<void>;
 };
 
 export const WeatherCard = ({
