@@ -4,6 +4,8 @@ import { WeatherCard, WeatherCardProps } from 'components/WeatherCard';
 import { Clouds } from 'components/Clouds';
 import { FullCloud } from 'components/FullCloud';
 import { RainComponent } from 'components/Rain';
+import { SnowFall } from 'components/SnowFall';
+import { StormRays } from 'components/StormRays';
 
 export type BaseProps = {
   weatherCard: WeatherCardProps;
@@ -31,6 +33,13 @@ export const Base = ({ weatherCard }: BaseProps) => {
       <Clouds cloudSizes={sizes2} cloudDurations={cloudDurations2} />
       <SunRays />
       <FullCloud />
+      <SnowFall numDrops={200} />
+      <StormRays
+        count={12}
+        length={500}
+        thickness={30}
+        animationEnabled={true}
+      />
       <RainComponent numDrops={200} />
       <Styled.Content>
         <WeatherCard
