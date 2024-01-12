@@ -2,10 +2,12 @@ import { Base } from 'templates/Base';
 import { useContext, useEffect, useState } from 'react';
 import mock from 'components/WeatherCard/mock';
 import { BlogThemeContext } from 'contexts/BlogThemeContext';
+import Head from 'next/head';
 
 export default function Index() {
   const [weatherData, setWeatherData] = useState(mock);
   const { setTheme } = useContext(BlogThemeContext);
+  const [cityTitle, setCityTitle] = useState('Dublin');
 
   // Função para buscar dados com base na cidade
   const fetchWeatherData = async (city: string): Promise<void> => {
@@ -18,6 +20,7 @@ export default function Index() {
 
       // Se a resposta da API contiver dados válidos, atualize o estado
       if (data) {
+        setCityTitle(city);
         const currentDate = new Date();
         const sunrise = new Date((data.sys.sunrise + data.sys.timezone) * 1000);
         const sunset = new Date((data.sys.sunset + data.sys.timezone) * 1000);
@@ -59,5 +62,13 @@ export default function Index() {
     }
   };
 
-  return <Base weatherCard={weatherData} onSearch={handleSearch} />;
+  return (
+    <>
+      <Head>
+        <title>Weather - {cityTitle}</title>
+        <meta name="description" content={`Weather - ${cityTitle}`} />
+      </Head>
+      <Base weatherCard={weatherData} onSearch={handleSearch} />
+    </>
+  );
 }
