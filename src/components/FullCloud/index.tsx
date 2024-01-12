@@ -1,10 +1,6 @@
 import * as Styled from './styles';
 
-export type FullCloudProps = {
-  title?: string;
-};
-
-export const FullCloud = ({ title }: FullCloudProps) => {
+export const FullCloud = () => {
   return (
     <Styled.Wrapper>
       <Styled.Base />

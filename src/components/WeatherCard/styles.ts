@@ -1,7 +1,6 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  ${({ theme }) => css`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,5 +17,4 @@ export const Wrapper = styled.div`
     width: 100%;
     justify-content: space-around;
   }
-  `}
 `;

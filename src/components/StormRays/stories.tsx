@@ -8,7 +8,6 @@ export default {
     count: 5,
     length: 100,
     thickness: 3,
-    animationEnabled: true,
   },
 } as Meta<StormRaysProps>;
 

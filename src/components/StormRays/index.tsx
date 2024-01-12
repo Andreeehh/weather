@@ -4,8 +4,7 @@ import * as Styled from './styles';
 export interface StormRaysProps {
   count: number; // Número de raios
   length: number; // Comprimento dos raios
-  thickness: number; // Espessura dos raios
-  animationEnabled?: boolean; // Ativar ou desativar a animação
+  thickness: number;
 }
 
 const generateRandomValue = (min: number, max: number) =>
@@ -15,7 +14,6 @@ export const StormRays: React.FC<StormRaysProps> = ({
   count = 10,
   length = 10,
   thickness = 10,
-  animationEnabled = true,
 }) => {
   const [rayDelays, setRayDelays] = useState<number[]>([]);
 

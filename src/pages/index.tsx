@@ -2,7 +2,6 @@ import { Base } from 'templates/Base';
 import { useContext, useEffect, useState } from 'react';
 import mock from 'components/WeatherCard/mock';
 import { BlogThemeContext } from 'contexts/BlogThemeContext';
-import { addSeconds } from 'date-fns';
 
 export default function Index() {
   const [weatherData, setWeatherData] = useState(mock);

@@ -50,12 +50,7 @@ export const Base = ({ weatherCard, onSearch }: BaseProps) => {
         <>
           <FullCloud />
 
-          <StormRays
-            count={12}
-            length={500}
-            thickness={30}
-            animationEnabled={true}
-          />
+          <StormRays count={12} length={500} thickness={30} />
           <RainComponent numDrops={200} />
         </>
       );
@@ -65,12 +60,7 @@ export const Base = ({ weatherCard, onSearch }: BaseProps) => {
         <>
           <FullCloud />
 
-          <StormRays
-            count={12}
-            length={500}
-            thickness={30}
-            animationEnabled={true}
-          />
+          <StormRays count={12} length={500} thickness={30} />
           <SnowFall numDrops={200} />
         </>
       );
