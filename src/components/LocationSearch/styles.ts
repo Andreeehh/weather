@@ -32,5 +32,10 @@ export const Wrapper = styled.div`
       padding: 8px; /* Espaçamento interno do input */
       color: ${theme.colors.deepBlack};
     }
+
+    :disabled {
+      opacity: 0.5; /* Opacidade reduzida para indicar que está desabilitado */
+      cursor: not-allowed; /* Cursor não permitido */
+    }
   `}
 `;

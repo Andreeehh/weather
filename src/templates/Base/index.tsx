@@ -15,10 +15,10 @@ export type BaseProps = {
 
 export const Base = ({ weatherCard, onSearch }: BaseProps) => {
   const weatherType = weatherCard.weatherInfo.weatherType.toLowerCase();
-  const sizes1 = [100, 200, 250, 300];
+  const sizes1 = [3, 6, 8, 10];
   const cloudDurations1 = ['30s', '35s', '40s', '45s'];
 
-  const sizes2 = [500, 450, 300, 250];
+  const sizes2 = [15, 12, 10, 8];
   const cloudDurations2 = ['55s', '50s', '45s', '40s'];
   let additionalComponents = null;
   switch (weatherType) {

@@ -6,8 +6,6 @@ export type RainProps = {
 };
 
 export const RainComponent = ({ numDrops }: RainProps) => {
-  console.log(theme.colors.rain);
-  console.log(theme.colors.primary);
   return (
     <Styled.Wrapper>
       <Rain
