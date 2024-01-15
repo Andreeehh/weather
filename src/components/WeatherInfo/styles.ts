@@ -10,8 +10,8 @@ ${({ theme }) => css`
 
 
   .weather-icon {
-    width: 14rem;
-    height: 14rem;
+    width: 32rem;
+    height: 32rem;
     object-fit: contain;
     margin-bottom: ${theme.spacings.large};
   }
