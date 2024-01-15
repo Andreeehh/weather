@@ -10,10 +10,11 @@ ${({ theme }) => css`
 
 
   .weather-icon {
-    width: 32rem;
-    height: 32rem;
+    width: 22rem;
+    height: 22rem;
     object-fit: contain;
     margin-bottom: ${theme.spacings.large};
+    opacity: .5;
   }
 
   .temperature-info {
