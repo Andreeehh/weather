@@ -45,6 +45,7 @@ export default function Index() {
             return fetchWeatherData(query);
           },
         });
+        setTheme(isNight ? 'inverted' : 'default');
       }
     } catch (error) {
       console.error(`Erro ao buscar dados de ${city}:`, error);
