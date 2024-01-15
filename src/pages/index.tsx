@@ -21,15 +21,22 @@ export default function Index() {
       // Se a resposta da API contiver dados válidos, atualize o estado
       if (data) {
         setCityTitle(city);
-        const currentDate = new Date();
-        const sunrise = new Date((data.sys.sunrise + data.sys.timezone) * 1000);
-        const sunset = new Date((data.sys.sunset + data.sys.timezone) * 1000);
+        const currentTime = new Date().getTime();
+        const currentDate =
+          data.timezone == -28800
+            ? new Date()
+            : new Date(currentTime + data.timezone * 1000);
+        const sunrise = new Date((data.sys.sunrise + data.timezone) * 1000);
+        const sunset = new Date((data.sys.sunset + data.timezone) * 1000);
+        const isNight =
+          currentDate.getTime() < sunrise.getTime() ||
+          currentDate.getTime() > sunset.getTime();
         setWeatherData({
           weatherInfo: {
             weatherType: data.weather[0].main,
             temperature: data.main.temp,
             description: data.weather[0].description,
-            isNight: currentDate > sunrise && currentDate < sunset,
+            isNight: isNight,
           },
           humidity: data.main.humidity,
           wind: data.wind.speed,

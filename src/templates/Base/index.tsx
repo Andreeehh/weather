@@ -15,18 +15,19 @@ export type BaseProps = {
 
 export const Base = ({ weatherCard, onSearch }: BaseProps) => {
   const weatherType = weatherCard.weatherInfo.weatherType.toLowerCase();
-  const sizes1 = [3, 6, 8, 10];
+  const sizes1 = [16, 19, 22, 25];
   const cloudDurations1 = ['30s', '35s', '40s', '45s'];
 
-  const sizes2 = [15, 12, 10, 8];
+  const sizes2 = [29, 26, 23, 20];
   const cloudDurations2 = ['55s', '50s', '45s', '40s'];
-  let additionalComponents = null;
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 600;
+  let additionalComponents = <></>;
   switch (weatherType) {
     case 'clouds':
       additionalComponents = (
         <>
           {!weatherCard.weatherInfo.isNight && (
-            <LightBeams count={50} length={150} />
+            <LightBeams count={isMobile ? 15 : 50} length={150} />
           )}
           {weatherCard.weatherInfo.isNight && <Moon />}
 

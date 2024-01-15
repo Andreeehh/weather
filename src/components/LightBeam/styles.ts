@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   left: 0;
   right: 0;
   height: 120%;
-  width: 120%;
+  width: 100%;
 `;
 
 export const LightBeam = styled.div`
