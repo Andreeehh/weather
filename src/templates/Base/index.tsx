@@ -84,6 +84,7 @@ export const Base = ({ weatherCard, onSearch }: BaseProps) => {
           humidity={weatherCard.humidity}
           wind={weatherCard.wind}
           onSearch={onSearch}
+          invalid={weatherCard.invalid}
         ></WeatherCard>
       </Styled.Content>
     </Styled.Wrapper>

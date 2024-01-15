@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -17,4 +17,13 @@ export const Wrapper = styled.div`
     width: 100%;
     justify-content: space-around;
   }
+`;
+
+export const Invalid = styled.span`
+  ${({ theme }) => css`
+      font-weight: bold;
+      margin: ${theme.spacings.medium} 0;
+      font-size: ${theme.font.sizes.medium};
+      color: ${theme.colors.info}
+  `}
 `;

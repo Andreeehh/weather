@@ -20,9 +20,6 @@ export default function Index() {
 
       // Se a resposta da API contiver dados válidos, atualize o estado
       if (data) {
-        if (data.code == 404) {
-          setWeatherData(mock);
-        }
         setCityTitle(city);
         const currentTime = new Date().getTime();
         const currentDate =
@@ -43,6 +40,7 @@ export default function Index() {
           },
           humidity: data.main.humidity,
           wind: data.wind.speed,
+          invalid: false,
           onSearch: (query: string) => {
             // Retorna a promessa resultante da chamada assíncrona
             return fetchWeatherData(query);
@@ -51,9 +49,9 @@ export default function Index() {
         setTheme(isNight ? 'inverted' : 'default');
       }
     } catch (error) {
-      console.error(`Erro ao buscar dados de ${city}:`, error);
-      // Rejeita a promessa em caso de erro
-      throw error;
+      mock.invalid = true;
+      setWeatherData(mock);
+      console.log(weatherData);
     }
   };
   const handleSearch = async (query: string): Promise<void> => {

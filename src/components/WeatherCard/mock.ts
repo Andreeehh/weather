@@ -8,4 +8,5 @@ export default {
   onSearch: (query: string) => {
     console.log(`Mock search triggered with query: ${query}`);
   },
+  invalid: false,
 } as WeatherCardProps;

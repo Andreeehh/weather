@@ -9,6 +9,7 @@ export type WeatherCardProps = {
   humidity: number;
   wind: number;
   onSearch: (query: string) => Promise<void>;
+  invalid: boolean;
 };
 
 export const WeatherCard = ({
@@ -16,11 +17,14 @@ export const WeatherCard = ({
   humidity,
   wind,
   onSearch,
+  invalid,
 }: WeatherCardProps) => {
+  console.log(invalid);
   return (
     <Styled.Wrapper>
       <LocationSearch onSearch={onSearch}></LocationSearch>
       <WeatherInfo {...weatherInfo}></WeatherInfo>
+      {!!invalid && <Styled.Invalid>Ops... invalid location.</Styled.Invalid>}
       <div className="weather-details">
         <Humidity value={humidity}></Humidity>
         <Wind value={wind}></Wind>
