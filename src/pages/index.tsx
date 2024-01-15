@@ -7,7 +7,7 @@ import Head from 'next/head';
 export default function Index() {
   const [weatherData, setWeatherData] = useState(mock);
   const { setTheme } = useContext(BlogThemeContext);
-  const [cityTitle, setCityTitle] = useState('Dublin');
+  const [cityTitle, setCityTitle] = useState('');
 
   // Função para buscar dados com base na cidade
   const fetchWeatherData = async (city: string): Promise<void> => {
@@ -20,6 +20,9 @@ export default function Index() {
 
       // Se a resposta da API contiver dados válidos, atualize o estado
       if (data) {
+        if (data.code == 404) {
+          setWeatherData(mock);
+        }
         setCityTitle(city);
         const currentTime = new Date().getTime();
         const currentDate =
@@ -53,13 +56,6 @@ export default function Index() {
       throw error;
     }
   };
-
-  useEffect(() => {
-    // Chame a função para buscar dados ao montar o componente
-    fetchWeatherData('dublin');
-    setTheme(weatherData.weatherInfo.isNight ? 'inverted' : 'default');
-  }, []);
-
   const handleSearch = async (query: string): Promise<void> => {
     try {
       // Chame a função para buscar dados quando a consulta de busca mudar
