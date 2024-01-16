@@ -25,12 +25,19 @@ export const LocationSearch: React.FC<LocationSearchProps> = ({ onSearch }) => {
     }
   };
 
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   return (
     <Styled.Wrapper>
       <TextField
         placeholder="Type city name"
         value={query}
         onChange={handleInputChange}
+        onKeyPress={handleKeyPress}
         disabled={disabled}
         InputProps={{
           startAdornment: <LocationOnIcon className="location-icon" />,
