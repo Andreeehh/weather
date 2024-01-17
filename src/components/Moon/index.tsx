@@ -16,7 +16,7 @@ export const Moon = () => {
   return (
     <Styled.Wrapper>
       <div></div>
-      <Styled.Phase phase="Waxing Gibbous"></Styled.Phase>
+      <Styled.Phase phase={phase}></Styled.Phase>
     </Styled.Wrapper>
   );
 };
