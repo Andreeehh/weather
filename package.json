@@ -27,6 +27,7 @@
     "@styled-icons/material-outlined": "^10.34.0",
     "@types/gsap": "^3.0.0",
     "date-fns-tz": "^2.0.0",
+    "lunarphase-js": "^2.0.1",
     "next": "12.1.6",
     "react": "18.1.0",
     "react-dom": "18.1.0",
